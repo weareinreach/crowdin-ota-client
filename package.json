@@ -1,74 +1,72 @@
 {
-  "name": "@weareinreach/crowdin-ota-client",
-  "version": "1.1.0",
-  "description": "JavaScript library for Crowdin OTA Content Delivery",
-  "main": "out/index.js",
-  "types": "out/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/weareinreach/crowdin-ota-client/tree/main"
-  },
-  "files": [
-    "out/**/*"
-  ],
-  "scripts": {
-    "test": "jest",
-    "build": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "lint": "eslint --fix \"{src,tests}/**/*.{js,ts}\"",
-    "lint-ci": "eslint \"{src,tests}/**/*.{js,ts}\"",
-    "test-coverage": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --coverageReporters=html",
-    "prepare": "husky install"
-  },
-  "keywords": [
-    "Crowdin",
-    "Over-The-Air",
-    "OTA",
-    "Content Delivery",
-    "CDN",
-    "instant",
-    "translations",
-    "internationalization",
-    "javascript",
-    "React Native",
-    "i18next",
-    "api",
-    "web",
-    "i18n",
-    "l10n"
-  ],
-  "license": "MIT",
-  "devDependencies": {
-    "@types/jest": "^29.5.0",
-    "@types/nock": "^10.0.3",
-    "@types/node": "^18.15.11",
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
-    "eslint": "^8.37.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.3",
-    "jest": "^29.5.0",
-    "jest-circus": "^29.5.0",
-    "jest-junit": "^15.0.0",
-    "lint-staged": ">=13",
-    "nock": "^13.3.0",
-    "prettier": "^2.8.7",
-    "ts-jest": "^29.1.0",
-    "typescript": "^5.0.3"
-  },
-  "dependencies": {
-    "axios": "^1",
-    "deepmerge": "^4.3.1"
-  },
-  "bugs": {
-    "url": "https://github.com/crowdin/ota-client-js/issues"
-  },
-  "homepage": "https://crowdin.github.io/ota-client-js/",
-  "directories": {
-    "test": "tests"
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  }
+    "name": "@weareinreach/crowdin-ota-client",
+    "version": "1.1.0",
+    "description": "JavaScript library for Crowdin OTA Content Delivery",
+    "main": "out/index.js",
+    "types": "out/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/weareinreach/crowdin-ota-client/tree/main"
+    },
+    "files": [
+        "out/**/*"
+    ],
+    "scripts": {
+        "test": "jest",
+        "build": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "lint": "eslint --fix \"{src,tests}/**/*.{js,ts}\"",
+        "lint-ci": "eslint \"{src,tests}/**/*.{js,ts}\"",
+        "test-coverage": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --coverageReporters=html",
+        "prepare": "husky install"
+    },
+    "keywords": [
+        "Crowdin",
+        "Over-The-Air",
+        "OTA",
+        "Content Delivery",
+        "CDN",
+        "instant",
+        "translations",
+        "internationalization",
+        "javascript",
+        "React Native",
+        "i18next",
+        "api",
+        "web",
+        "i18n",
+        "l10n"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+        "@types/jest": "^29.5.6",
+        "@types/node": "^18.18.7",
+        "@typescript-eslint/eslint-plugin": "^5.62.0",
+        "@typescript-eslint/parser": "^5.62.0",
+        "eslint": "^8.52.0",
+        "eslint-config-prettier": "^8.10.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "husky": "^8.0.3",
+        "jest": "^29.7.0",
+        "jest-circus": "^29.7.0",
+        "jest-junit": "^15.0.0",
+        "lint-staged": "^15.0.2",
+        "msw": "^2.0.0",
+        "prettier": "^2.8.8",
+        "ts-jest": "^29.1.1",
+        "typescript": "^5.2.2"
+    },
+    "dependencies": {
+        "just-extend": "^6.2.0"
+    },
+    "bugs": {
+        "url": "https://github.com/crowdin/ota-client-js/issues"
+    },
+    "homepage": "https://crowdin.github.io/ota-client-js/",
+    "directories": {
+        "test": "tests"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
 }

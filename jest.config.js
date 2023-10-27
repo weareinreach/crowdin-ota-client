@@ -10,7 +10,7 @@ module.exports = {
          * it fully supports CJS.
          * @see https://github.com/axios/axios/issues/5101
          */
-        '^axios$': require.resolve('axios'),
+        // '^axios$': require.resolve('axios'),
     },
     testRegex: '(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
