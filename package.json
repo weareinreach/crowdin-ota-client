@@ -1,12 +1,12 @@
 {
-  "name": "@crowdin/ota-client",
+  "name": "@weareinreach/crowdin-ota-client",
   "version": "1.1.0",
   "description": "JavaScript library for Crowdin OTA Content Delivery",
   "main": "out/index.js",
   "types": "out/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/crowdin/ota-client-js.git"
+    "url": "https://github.com/weareinreach/crowdin-ota-client/tree/main"
   },
   "files": [
     "out/**/*"
@@ -58,7 +58,8 @@
     "typescript": "^5.0.3"
   },
   "dependencies": {
-    "axios": "^1"
+    "axios": "^1",
+    "deepmerge": "^4.3.1"
   },
   "bugs": {
     "url": "https://github.com/crowdin/ota-client-js/issues"
