@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AxiosHttpClient } from './internal/http/axiosClient';
+import { FetchHttpClient } from './internal/http/fetchClient';
 import { isJsonFile } from './internal/util/strings';
 import { ClientConfig, HttpClient, LanguageStrings, LanguageTranslations, Manifest, Translations } from './model';
-import * as mergeDeep from 'deepmerge';
+import mergeDeep from 'just-extend';
 /**
  * @category OtaClient
  */
@@ -26,7 +26,7 @@ export default class OtaClient {
      * @param config client config
      */
     constructor(private distributionHash: string, config?: ClientConfig) {
-        this.httpClient = config?.httpClient || new AxiosHttpClient();
+        this.httpClient = config?.httpClient || new FetchHttpClient();
         this.disableManifestCache = !!config?.disableManifestCache;
         this.locale = config?.languageCode;
         this.disableStringsCache = !!config?.disableStringsCache;
@@ -88,7 +88,7 @@ export default class OtaClient {
     async getLanguageContent(languageCode?: string): Promise<string[]> {
         const language = this.getLanguageCode(languageCode);
         const content = await this.getContent();
-        return content[language];
+        return content[language] ?? [];
     }
 
     /**
@@ -228,7 +228,7 @@ export default class OtaClient {
             if (this.disableJsonDeepMerge) {
                 strings = { ...strings, ...content };
             } else {
-                strings = mergeDeep(strings, content);
+                strings = mergeDeep(true, strings, content);
             }
         }
         return strings;

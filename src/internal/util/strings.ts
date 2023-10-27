@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function isJsonFile(file: string): boolean {
     const extension = (file ?? '').split('.').pop();
     return extension?.toLocaleLowerCase() === 'json';

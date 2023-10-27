@@ -1,10 +1,11 @@
-import * as nock from 'nock';
+import { http } from 'msw';
+import { setupServer } from 'msw/node';
 import OtaClient from '../src/index';
 import { Manifest } from '../src/model';
 
 describe('OTA client', () => {
     const now = Date.now();
-    let scope: nock.Scope;
+    // let scope: nock.Scope;
     const languageCode = 'uk';
     const hash = 'testHash';
     const client = new OtaClient(hash);
@@ -37,22 +38,40 @@ describe('OTA client', () => {
     };
 
     beforeAll(() => {
-        scope = nock(OtaClient.BASE_URL)
-            .get(`/${hash}/manifest.json`)
-            .reply(200, manifest)
-            .get(`/${hash}${filePath}?timestamp=${now}`)
-            .times(3)
-            .reply(200, fileContent)
-            .get(`/${hash}${jsonFilePath1}?timestamp=${now}`)
-            .times(3)
-            .reply(200, jsonFileContent1)
-            .get(`/${hash}${jsonFilePath2}?timestamp=${now}`)
-            .times(3)
-            .reply(200, jsonFileContent2);
+        const handlers = [
+            http.get(`${OtaClient.BASE_URL}/${hash}/manifest.json`, () => {
+                return Response.json(manifest);
+            }),
+            http.get(`${OtaClient.BASE_URL}/${hash}${filePath}`, () => {
+                return Response.json(fileContent);
+            }),
+            http.get(`${OtaClient.BASE_URL}/${hash}${jsonFilePath1}`, () => {
+                return Response.json(jsonFileContent1);
+            }),
+            http.get(`${OtaClient.BASE_URL}/${hash}${jsonFilePath2}`, () => {
+                return Response.json(jsonFileContent2);
+            }),
+        ];
+
+        const mswServer = setupServer(...handlers);
+
+        mswServer.listen();
+        //     scope = nock(OtaClient.BASE_URL)
+        //         .get(`/${hash}/manifest.json`)
+        //         .reply(200, manifest)
+        //         .get(`/${hash}${filePath}?timestamp=${now}`)
+        //         .times(3)
+        //         .reply(200, fileContent)
+        //         .get(`/${hash}${jsonFilePath1}?timestamp=${now}`)
+        //         .times(3)
+        //         .reply(200, jsonFileContent1)
+        //         .get(`/${hash}${jsonFilePath2}?timestamp=${now}`)
+        //         .times(3)
+        //         .reply(200, jsonFileContent2);
     });
 
     afterAll(() => {
-        scope.done();
+        // scope.done();
     });
 
     it('should return correct hash', () => {
@@ -94,8 +113,8 @@ describe('OTA client', () => {
 
     it('should return all translations', async () => {
         const translations = await client.getTranslations();
-        expect(translations[languageCode].length).toBe(3);
-        expect(translations[languageCode].find((e) => e.file === filePath)?.content).toBe(fileContent);
+        expect(translations[languageCode]?.length).toBe(3);
+        expect(translations[languageCode]?.find((e) => e.file === filePath)?.content).toBe(fileContent);
     });
 
     it('should not get translations for language if language was not specified', async () => {
