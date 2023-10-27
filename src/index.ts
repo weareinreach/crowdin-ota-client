@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AxiosHttpClient } from './internal/http/axiosClient';
-import { isJsonFile, mergeDeep } from './internal/util/strings';
+import { isJsonFile } from './internal/util/strings';
 import { ClientConfig, HttpClient, LanguageStrings, LanguageTranslations, Manifest, Translations } from './model';
-
+import * as mergeDeep from 'deepmerge';
 /**
  * @category OtaClient
  */
@@ -227,7 +228,7 @@ export default class OtaClient {
             if (this.disableJsonDeepMerge) {
                 strings = { ...strings, ...content };
             } else {
-                mergeDeep(strings, content);
+                strings = mergeDeep(strings, content);
             }
         }
         return strings;
