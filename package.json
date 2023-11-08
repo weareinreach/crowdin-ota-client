@@ -11,9 +11,12 @@
     "files": [
         "out/**/*"
     ],
+    "type": "module",
+    "sideEffects": false,
     "scripts": {
         "test": "jest",
-        "build": "tsc -p ./",
+        "build": "tsup",
+        "tsc": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "lint": "eslint --fix \"{src,tests}/**/*.{js,ts}\"",
         "lint-ci": "eslint \"{src,tests}/**/*.{js,ts}\"",
@@ -39,6 +42,7 @@
     ],
     "license": "MIT",
     "devDependencies": {
+        "@edge-runtime/jest-environment": "^2.3.7",
         "@types/jest": "^29.5.6",
         "@types/node": "^18.18.7",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
@@ -53,7 +57,9 @@
         "lint-staged": "^15.0.2",
         "msw": "^2.0.0",
         "prettier": "^2.8.8",
+        "terser": "^5.24.0",
         "ts-jest": "^29.1.1",
+        "tsup": "^7.2.0",
         "typescript": "^5.2.2"
     },
     "dependencies": {

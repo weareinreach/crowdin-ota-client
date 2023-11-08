@@ -1,5 +1,5 @@
-module.exports = {
-    testEnvironment: 'node',
+export default {
+    testEnvironment: '@edge-runtime/jest-environment',
     testRunner: 'jest-circus/runner',
     transform: {
         '^.+\\.(t|j)sx?$': 'ts-jest',

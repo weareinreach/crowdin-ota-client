@@ -1,3 +1,4 @@
+// jest --env @edge-runtime/jest-environment
 import { isJsonFile, mergeDeep } from '../../../src/internal/util/strings';
 
 describe('Strings Util', () => {
@@ -9,6 +10,7 @@ describe('Strings Util', () => {
     });
 
     it('shoud deep merge two objects', () => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const target: any = {
             field1: {
                 value1: 'Test1',

@@ -1,3 +1,4 @@
+// jest --env @edge-runtime/jest-environment
 import { http } from 'msw';
 import { setupServer } from 'msw/node';
 import OtaClient from '../src/index';
